@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agenda Semanal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Agenda Semanal</h1>
+
+  <div class="top-bar">
+    <button id="novaTarefaBtn">+ Nova Tarefa</button>
+    <input type="text" id="buscarInput" placeholder="🔍 Buscar tarefa..." />
+    <button id="toggleTema">🌙 Tema</button>
+  </div>
+
+<div class="grade">
+  <div class="dia" data-dia="segunda">Segunda - Feira</div>
+  <div class="dia" data-dia="terca">Terça - Feira</div>
+  <div class="dia" data-dia="quarta">Quarta - Feira</div>
+  <div class="dia" data-dia="quinta">Quinta - Feira</div>
+  <div class="dia" data-dia="sexta">Sexta - Feira</div>
+  <div class="dia" data-dia="sabado">Sábado</div>
+  <div class="dia" data-dia="domingo">Domingo</div>
+</div>
+
+
+
+  <!-- Modal -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <h3 id="modalTitulo">Adicionar Tarefa</h3>
+      <input type="text" id="tarefaInput" placeholder="Descrição da tarefa" />
+      <input type="time" id="horaInput" />
+      <select id="diaSelect">
+        <option value="segunda">Segunda</option>
+        <option value="terca">Terça</option>
+        <option value="quarta">Quarta</option>
+        <option value="quinta">Quinta</option>
+        <option value="sexta">Sexta</option>
+        <option value="sabado">Sábado</option>
+        <option value="domingo">Domingo</option>
+      </select>
+      <button id="salvarBtn">Salvar</button>
+      <button id="cancelarBtn">Cancelar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

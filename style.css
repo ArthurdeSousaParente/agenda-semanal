@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background: #f0f2f5;
+  color: #333;
+  padding: 20px;
+  transition: background 0.3s, color 0.3s;
+}
+
+body.dark {
+  background: #121212;
+  color: #eee;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.top-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.top-bar input {
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  min-width: 200px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.top-bar input:focus {
+  border-color: #888;
+}
+
+#novaTarefaBtn,
+#toggleTema {
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+  background: #4f46e5;
+  color: #fff;
+  transition: background 0.3s;
+}
+
+#novaTarefaBtn:hover,
+#toggleTema:hover {
+  background: #3730a3;
+}
+
+.grade {
+  display: grid;
+  grid-template-columns: repeat(3, 400px);
+  grid-template-rows: repeat(3, 220px);
+  gap: 30px;
+  justify-content: center;
+}
+
+.dia {
+  background-color: #dbdbdb;
+  border-radius: 12px;
+  padding: 10px;
+  overflow-y: auto;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  font-size: 0.95rem;
+  height: 220px;
+  width: 400px;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.dia[data-dia="domingo"] {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+body.dark .dia {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.tarefa {
+  background: #e0e7ff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  cursor: grab;
+  position: relative;
+  transition: background 0.3s;
+}
+
+body.dark .tarefa {
+  background: #2d2d2d;
+}
+
+.tarefa strong {
+  font-weight: 600;
+}
+
+.tarefa small {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-top: 3px;
+}
+
+.tarefa button {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  border: none;
+  background: transparent;
+  color: #c00;
+  cursor: pointer;
+  font-size: 30px; /* aumentamos aqui */
+  transition: transform 0.2s ease;
+}
+
+.tarefa button:hover {
+  transform: scale(1.2); /* animação leve ao passar o mouse */
+}
+
+
+.modal.hidden {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.modal-content {
+  background: #ffffff;
+  padding: 25px;
+  width: 320px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+body.dark .modal-content {
+  background: #1e1e1e;
+  color: #eee;
+}
+
+.modal-content input,
+.modal-content select,
+.modal-content button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  outline: none;
+}
+
+.modal-content input:focus,
+.modal-content select:focus {
+  border-color: #888;
+}
+
+.modal-content button {
+  background: #4f46e5;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background: #3730a3;
+}
