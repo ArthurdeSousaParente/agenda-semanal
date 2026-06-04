@@ -4,48 +4,216 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Agenda Semanal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Agenda Semanal</h1>
 
-  <div class="top-bar">
-    <button id="novaTarefaBtn">+ Nova Tarefa</button>
-    <input type="text" id="buscarInput" placeholder="🔍 Buscar tarefa..." />
-    <button id="toggleTema">🌙 Tema</button>
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
   </div>
 
-<div class="grade">
-  <div class="dia" data-dia="segunda">Segunda - Feira</div>
-  <div class="dia" data-dia="terca">Terça - Feira</div>
-  <div class="dia" data-dia="quarta">Quarta - Feira</div>
-  <div class="dia" data-dia="quinta">Quinta - Feira</div>
-  <div class="dia" data-dia="sexta">Sexta - Feira</div>
-  <div class="dia" data-dia="sabado">Sábado</div>
-  <div class="dia" data-dia="domingo">Domingo</div>
-</div>
+  <div class="app-wrapper">
 
+    <header class="app-header">
+      <div class="header-left">
+        <div class="logo-mark">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="4" width="10" height="10" rx="2.5" fill="currentColor" opacity="0.9"/>
+            <rect x="18" y="4" width="10" height="10" rx="2.5" fill="currentColor" opacity="0.5"/>
+            <rect x="4" y="18" width="10" height="10" rx="2.5" fill="currentColor" opacity="0.5"/>
+            <rect x="18" y="18" width="10" height="10" rx="2.5" fill="currentColor" opacity="0.2"/>
+          </svg>
+        </div>
+        <div class="header-title-group">
+          <h1 class="app-title">Agenda Semanal</h1>
+          <p class="app-subtitle" id="dataAtual"></p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div class="search-wrapper">
+          <svg class="search-icon" viewBox="0 0 20 20" fill="none">
+            <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <input type="text" id="buscarInput" placeholder="Buscar tarefa..." />
+          <kbd class="search-kbd">/</kbd>
+        </div>
+        <button id="novaTarefaBtn" class="btn-primary">
+          <svg viewBox="0 0 20 20" fill="none">
+            <path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Nova Tarefa
+        </button>
+        <button id="toggleTema" class="btn-icon" title="Alternar tema">
+          <svg class="icon-moon" viewBox="0 0 20 20" fill="none">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" fill="currentColor"/>
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="3" fill="currentColor"/>
+            <path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.22 4.22l1.42 1.42M14.36 14.36l1.42 1.42M4.22 15.78l1.42-1.42M14.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </header>
 
+    <div class="semana-nav">
+      <div class="semana-info">
+        <span class="semana-label">Semana atual</span>
+        <span class="semana-range" id="semanaRange"></span>
+      </div>
+      <div class="legenda">
+        <span class="legenda-item"><span class="dot dot-alta"></span>Alta</span>
+        <span class="legenda-item"><span class="dot dot-media"></span>Média</span>
+        <span class="legenda-item"><span class="dot dot-baixa"></span>Baixa</span>
+      </div>
+    </div>
+
+    <div class="grade" id="grade">
+      <div class="dia" data-dia="segunda">
+        <div class="dia-header">
+          <div class="dia-info">
+            <span class="dia-nome">Segunda</span>
+            <span class="dia-data" data-offset="0"></span>
+          </div>
+          <span class="tarefa-count">0</span>
+        </div>
+        <div class="tarefas-lista"></div>
+      </div>
+      <div class="dia" data-dia="terca">
+        <div class="dia-header">
+          <div class="dia-info">
+            <span class="dia-nome">Terça</span>
+            <span class="dia-data" data-offset="1"></span>
+          </div>
+          <span class="tarefa-count">0</span>
+        </div>
+        <div class="tarefas-lista"></div>
+      </div>
+      <div class="dia" data-dia="quarta">
+        <div class="dia-header">
+          <div class="dia-info">
+            <span class="dia-nome">Quarta</span>
+            <span class="dia-data" data-offset="2"></span>
+          </div>
+          <span class="tarefa-count">0</span>
+        </div>
+        <div class="tarefas-lista"></div>
+      </div>
+      <div class="dia" data-dia="quinta">
+        <div class="dia-header">
+          <div class="dia-info">
+            <span class="dia-nome">Quinta</span>
+            <span class="dia-data" data-offset="3"></span>
+          </div>
+          <span class="tarefa-count">0</span>
+        </div>
+        <div class="tarefas-lista"></div>
+      </div>
+      <div class="dia" data-dia="sexta">
+        <div class="dia-header">
+          <div class="dia-info">
+            <span class="dia-nome">Sexta</span>
+            <span class="dia-data" data-offset="4"></span>
+          </div>
+          <span class="tarefa-count">0</span>
+        </div>
+        <div class="tarefas-lista"></div>
+      </div>
+      <div class="dia dia-fim-semana" data-dia="sabado">
+        <div class="dia-header">
+          <div class="dia-info">
+            <span class="dia-nome">Sábado</span>
+            <span class="dia-data" data-offset="5"></span>
+          </div>
+          <span class="tarefa-count">0</span>
+        </div>
+        <div class="tarefas-lista"></div>
+      </div>
+      <div class="dia dia-fim-semana" data-dia="domingo">
+        <div class="dia-header">
+          <div class="dia-info">
+            <span class="dia-nome">Domingo</span>
+            <span class="dia-data" data-offset="6"></span>
+          </div>
+          <span class="tarefa-count">0</span>
+        </div>
+        <div class="tarefas-lista"></div>
+      </div>
+    </div>
+
+  </div>
 
   <!-- Modal -->
-  <div id="modal" class="modal hidden">
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitulo">
+    <div class="modal-backdrop"></div>
     <div class="modal-content">
-      <h3 id="modalTitulo">Adicionar Tarefa</h3>
-      <input type="text" id="tarefaInput" placeholder="Descrição da tarefa" />
-      <input type="time" id="horaInput" />
-      <select id="diaSelect">
-        <option value="segunda">Segunda</option>
-        <option value="terca">Terça</option>
-        <option value="quarta">Quarta</option>
-        <option value="quinta">Quinta</option>
-        <option value="sexta">Sexta</option>
-        <option value="sabado">Sábado</option>
-        <option value="domingo">Domingo</option>
-      </select>
-      <button id="salvarBtn">Salvar</button>
-      <button id="cancelarBtn">Cancelar</button>
+      <div class="modal-header">
+        <h3 id="modalTitulo">Nova Tarefa</h3>
+        <button class="modal-close" id="cancelarBtn" aria-label="Fechar">
+          <svg viewBox="0 0 20 20" fill="none">
+            <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="tarefaInput">Descrição</label>
+          <input type="text" id="tarefaInput" placeholder="O que você precisa fazer?" autocomplete="off"/>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="horaInput">Horário</label>
+            <input type="time" id="horaInput" />
+          </div>
+          <div class="form-group">
+            <label for="diaSelect">Dia</label>
+            <select id="diaSelect">
+              <option value="segunda">Segunda</option>
+              <option value="terca">Terça</option>
+              <option value="quarta">Quarta</option>
+              <option value="quinta">Quinta</option>
+              <option value="sexta">Sexta</option>
+              <option value="sabado">Sábado</option>
+              <option value="domingo">Domingo</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Prioridade</label>
+          <div class="prioridade-group">
+            <label class="radio-pill">
+              <input type="radio" name="prioridade" value="alta" />
+              <span>Alta</span>
+            </label>
+            <label class="radio-pill">
+              <input type="radio" name="prioridade" value="media" checked />
+              <span>Média</span>
+            </label>
+            <label class="radio-pill">
+              <input type="radio" name="prioridade" value="baixa" />
+              <span>Baixa</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="salvarBtn" class="btn-primary btn-full">
+          <svg viewBox="0 0 20 20" fill="none">
+            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+          </svg>
+          Salvar Tarefa
+        </button>
+      </div>
     </div>
   </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast hidden"></div>
 
   <script src="script.js"></script>
 </body>
